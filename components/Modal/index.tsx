@@ -2,7 +2,6 @@ import { useRouter } from 'next/router';
 import {type FC, type PropsWithChildren, MouseEvent} from 'react';
 import ReactDOM from 'react-dom';
 import classes from './style.module.css';
-
 interface ModalProps {
     onClose: (e?: MouseEvent<HTMLSpanElement>) => void;
     nodeId?: string;
