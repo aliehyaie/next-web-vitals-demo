@@ -10,7 +10,6 @@ interface ModalProps {
     className?: string;
 }
 
-
 const Modal: FC<PropsWithChildren & ModalProps> = ({
     children,
     isOpen,
