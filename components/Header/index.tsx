@@ -2,6 +2,7 @@ import React from 'react';
 import Link from "next/link";
 import classes from './style.module.css';
 import {usePathname} from "next/navigation";
+import Image from "next/image";
 
 const Header = () => {
     const pathname = usePathname();
@@ -9,7 +10,7 @@ const Header = () => {
     return (
         <header className={classes.header}>
             <Link className={classes.logo} href='/'>
-                <img src="/images/logo.png" alt='A plate with food on it'/>
+                <Image width={80} height={80} priority src="/images/logo.png" alt='A plate with food on it'/>
                 Next Level Food
             </Link>
             <nav className={classes.nav}>
