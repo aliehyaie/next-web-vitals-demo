@@ -1,7 +1,9 @@
+import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import {type FC, type PropsWithChildren, MouseEvent} from 'react';
 import ReactDOM from 'react-dom';
 import classes from './style.module.css';
+
 interface ModalProps {
     onClose: (e?: MouseEvent<HTMLSpanElement>) => void;
     nodeId?: string;
@@ -9,23 +11,21 @@ interface ModalProps {
     className?: string;
 }
 
+
 const Modal: FC<PropsWithChildren & ModalProps> = ({
-    children,
-    isOpen,
-    nodeId,
-    onClose,
-    className,
-}) => {
+                                                       children,
+                                                       isOpen,
+                                                       nodeId,
+                                                       onClose,
+                                                       className,
+                                                   }) => {
     const router = useRouter();
 
     const closeModalHandler = () => {
         onClose();
     };
 
-    if (typeof window === "undefined") return <></>;
-
-
-        return ReactDOM.createPortal(
+    return ReactDOM.createPortal(
         <>
             {isOpen && (
                 <span onClick={closeModalHandler} className={classes.overlay} />
@@ -35,7 +35,7 @@ const Modal: FC<PropsWithChildren & ModalProps> = ({
                     isOpen ? classes.active : ''
                 } ${className}`}
             >
-                <span className={classes.close} onClick={closeModalHandler}>
+                <span onClick={closeModalHandler}>
                     X
                 </span>
                 {children}
@@ -45,4 +45,6 @@ const Modal: FC<PropsWithChildren & ModalProps> = ({
     );
 };
 
-export default Modal;
+export default dynamic(() => Promise.resolve(Modal), {
+    ssr: false,
+});
