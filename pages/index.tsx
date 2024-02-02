@@ -7,10 +7,6 @@ import Grid from "@/components/Grid";
 import Modal from "@/components/Modal";
 import {useState} from "react";
 
-const inter = Inter({ subsets: ["latin"] });
-/*<main
-    className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
->*/
 export default function Home() {
     const [isOpen,setIsOpen] = useState(false);
   return (
